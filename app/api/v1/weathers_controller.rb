@@ -1,11 +1,12 @@
-class Api::V1::WeathersController < ApplicationController 
+class Api::V1::ForecastController < ApplicationController 
     def index 
-        data = WeatherFacade.forecast(params[:location])
-        json_response(data)
+        location = GeocodeFacade.geocode(forecast_params)
+        weather = WeatherFacade.forecast(location)
+        render json: ForecastSerialzer.new(weather)
     end
 
 private 
-    def json_response(object, status = :ok)
-        render json: WeatherSerializer.new(object), status: status 
+    def forecast_params 
+        params.permit(:location)
     end
 end
