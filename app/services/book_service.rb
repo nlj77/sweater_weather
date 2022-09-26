@@ -1,7 +1,7 @@
 class BookService
     def self.get_books(location, limit)
         response = conn.get('search.json') do |route|
-        route.params['place'] = location
+        route.params['q'] = location
         route.params['limit'] = limit
         end
     parse_json(response)
