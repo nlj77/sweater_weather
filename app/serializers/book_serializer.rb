@@ -1,6 +1,6 @@
 class BookSerializer
 
-    def self.book_search_response(books, forecast, location)
+    def self.book_search(books, forecast, location)
         { "data":
         {
             "id": 'null',
@@ -8,8 +8,8 @@ class BookSerializer
             "attributes": {
             "destination": location,
             "forecast": {
-                "summary": forecast.conditions,
-                "temperature": forecast.temp
+                "summary": forecast.current_weather[:conditions],
+                "temperature": forecast.current_weather[:temperature]
                 }, 
             "total_books_found": books[1],
             "books": books[0].map do |book|
