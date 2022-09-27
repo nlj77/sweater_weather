@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'it can render a session ' do
     before :each do
         user = {
-        username: 'test@test.com',
+        email: 'test@test.com',
         password: 'test',
         password_confirmation: 'test'
         }
@@ -18,7 +18,7 @@ RSpec.describe 'it can render a session ' do
 
     it "is able to get login, post, and create a session" do
         login = {
-        "username": "test@test.com",
+        "email": "test@test.com",
         "password": "test"
         }
 
