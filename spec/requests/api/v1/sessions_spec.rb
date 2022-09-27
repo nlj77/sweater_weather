@@ -27,4 +27,27 @@ RSpec.describe 'it can render a session ' do
         expect(response).to be_successful
     end
 
+    it "can handle invalid logins" do
+        login = {
+        "email": "",
+        "password": "test"
+        }
+
+        post '/api/v1/sessions', params: login
+
+        expect(response).to_not be_successful
+    
+    end
+
+    it "can handle invalid passwords" do
+        login = {
+        "email": "test",
+        "password": ""
+        }
+
+        post '/api/v1/sessions', params: login
+
+        expect(response).to_not be_successful
+    end
+
 end
