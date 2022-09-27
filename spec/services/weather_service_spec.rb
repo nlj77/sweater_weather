@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe WeatherService do
 
+    
     it 'returns forecast JSON data for a given latitude & longitude', :vcr do
         coords = GeocodeFacade.geocode('denver,co')
         lat = coords.lat
