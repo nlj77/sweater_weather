@@ -31,5 +31,51 @@ RSpec.describe 'Users Endpoint' do
             expect(data[:attributes][:username]).to be_a String
             expect(data[:attributes][:api_key]).to be_a String
         end
-    end 
+    end
+    describe 'sad path' do
+            it 'fails to create user without email' do
+            headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
+            user_params = {
+                "password": "test",
+                "password_confirmation": "test"
+            }
+            post api_v1_users_path, headers: headers, params: user_params.to_json
+            expect(User.count).to eq(0)
+            expect(response).to_not be_successful
+            expect(response.status).to eq(401)
+            end
+            it 'fails to create user without password' do
+            headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
+            user_params = {
+                "username": 'test@test.com',
+            }
+            post api_v1_users_path, headers: headers, params: user_params.to_json
+            expect(User.count).to eq(0)
+            expect(response).to_not be_successful
+            expect(response.status).to eq(401)
+            end
+            it 'fails to create user if password confirmation fails' do
+            headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
+            user_params = {
+                "username": 'test@test.com',
+                "password": "test",
+                "password_confirmation": "4321"
+            }
+            post api_v1_users_path, headers: headers, params: user_params.to_json
+            expect(User.count).to eq(0)
+            expect(response).to_not be_successful
+            expect(response.status).to eq(401)
+            end
+            it 'fails to create user if no JSON body is sent' do
+            user_params = {
+                "username": 'test@test.com',
+                "password": "test",
+                "password_confirmation": "test"
+            }
+            post api_v1_users_path, params: user_params.to_json
+            expect(User.count).to eq(0)
+            expect(response).to_not be_successful
+            expect(response.status).to eq(401)
+            end
+        end
 end
