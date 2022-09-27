@@ -1,6 +1,6 @@
 require 'date'
 
-class Weather
+class Forecast
     attr_reader :id, 
                 :type, 
                 :attributes

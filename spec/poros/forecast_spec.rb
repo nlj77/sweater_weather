@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe Weather do
+RSpec.describe Forecast do
     it 'exists and has attributes', :vcr do
         geocode = GeocodeFacade.geocode('Denver')
         service = WeatherService.forecast(geocode)
-        denver = Weather.new(service)
+        denver = Forecast.new(service)
         expect(denver.id).to be_nil
         expect(denver.type).to eq('forecast')
         expect(denver.current_weather).to be_a(Hash)
