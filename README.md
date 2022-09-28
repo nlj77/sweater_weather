@@ -10,8 +10,6 @@
     <li><a href="#project-files-description"> ➤ Project Files Description</a></li>
     <li><a href="#getting-started"> ➤ Getting Started</a></li>
     <li><a href="#Endpoints"> ➤ Endpoints</a></li>
-    <li><a href="#Pitch"> ➤ Pitch</a></li>
-    <li><a href="#MVP"> ➤ MVP</a></li>
     <li><a href="#credits"> ➤ Credits</a></li>
   </ol>
  </details>
@@ -21,8 +19,8 @@
 <ul>
   <li><b>app/controllers</li></b>
   <ol>
-  <li>Contains several controllers that initiates API call processes through <i>movie_facade.rb</i></li></ol>
-  <li><b>app/controllers/parks_facade.rb, restaurants_facade.rb</b></li><ol>
+  <li>Contains several controllers that initiates API call processes through <i>Forecastfacade.rb</i></li></ol>
+  <li><b>app/controllers/GeocodeFacade.rb</b></li><ol>
   <li>Processes data returned through <i>app/services</i></li></ol>
    <li><b>app/services</b>
     <ol>
@@ -50,9 +48,9 @@
   <!-- Endpoints -->
 <h2 id="Endpoints"> :book: Endpoints</h2>
 
-### [Mapquest] (https://www.mapquestapi.com/geocoding/v1/address')
+### [Mapquest](https://www.mapquestapi.com/geocoding/v1/address')
 *Authorization: api key
-### [Mapquest] (https://www.mapquestapi.com/directions/v2/route')
+### [Mapquest](https://www.mapquestapi.com/directions/v2/route')
 *Authorization: api key
 ### [OpenWeather](http://api.openweathermap.org/data/2.5/onecall)
 * Authorization: api key
