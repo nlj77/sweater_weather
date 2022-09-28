@@ -1,12 +1,7 @@
-require 'rails_helper'
+require 'rails_helper' 
 
-RSpec.describe ForecastFacade do
-    it 'creates Forecast object', :vcr do
-        location = GeocodeFacade.geocode('denver,co')
-        forecast = ForecastFacade.forecast(location)
-        expect(forecast).to be_a(Forecast)
-    end
-    it 'creates a road trip object', :vcr do
+RSpec.describe Roadtrip do 
+    it 'exists and has origin, destination, travel time, temperature, and weather conditions', :vcr do 
         starting_location = 'Denver, CO'
         destination = 'Los Angeles, CA'
         coords = GeocodeFacade.geocode('Los Angeles, CA')
@@ -24,6 +19,6 @@ RSpec.describe ForecastFacade do
         expect(roadtrip.destination).to eq destination
         expect(roadtrip.trip_time_hours).to eq '14 hours'
         expect(roadtrip.weather_data).to be_a Hash
-        expect(roadtrip.weather_data[:current][:temp]).to eq 81.73
+        expect(roadtrip.weather_data[:current][:temp]).to eq 83.14
     end
 end

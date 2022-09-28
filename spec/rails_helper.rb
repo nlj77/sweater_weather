@@ -69,6 +69,8 @@ VCR.configure do |config|
   config.hook_into :webmock
   config.filter_sensitive_data('<map_key>') { ENV['map_key'] }
   config.filter_sensitive_data('<weather_key>') { ENV['weather_key'] }
+  config.default_cassette_options = { re_record_interval: 30.days }
+
   config.configure_rspec_metadata!
 end
 Shoulda::Matchers.configure do |config|
