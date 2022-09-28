@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       get '/forecast', to: 'forecast#index'
       resources :users
       resources :sessions, only: [:create]
+      resources :road_trip
     end
   end
 end

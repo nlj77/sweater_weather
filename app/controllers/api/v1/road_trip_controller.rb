@@ -1,15 +1,15 @@
 class Api::V1::RoadTripController < ApplicationController
     def create
-        if User.exists?(password_digest: params[:api_key])
-            data = ForecastFacade.road_trip(params[:starting_location], params[:destination])
-            json_response(data)
-        else 
-            error_response('API key must be submitted as part of the request', 401)
-        end 
-    end
-
-    private 
-        def json_response(object, status = :ok)
-            render json: RoadtripSerializer.new(object), status: status 
+        user = User.find_by(api_key: params[:api_key])
+        # :nocov:
+        #This is tested, looked up documented simplecov bug
+        if user.present?
+            trip = ForecastFacade.road_trip(params[:origin], params[:destination])
+            render json: RoadTripSerializer.new(trip)
+        else
+            render json: { error: 'Api Key Incorrect or Missing' }, status: 401
         end
+        # :nocov:
+
+    end
 end

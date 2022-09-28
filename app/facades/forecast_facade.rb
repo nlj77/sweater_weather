@@ -6,7 +6,7 @@ class ForecastFacade
     # :nocov:
 
     def self.road_trip(starting_location, destination)
-        destination_weather = (WeatherService.forecast(location))
+        destination_weather = (WeatherService.forecast(destination))
         time = GeocodeService.get_directions(starting_location, destination)
         trip_time = time[:route][:time]
 
