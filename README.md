@@ -59,10 +59,10 @@
 <h2 id="getting-started"> :book: Getting Started</h2>
 
 <p><b>1. </b> Create a new directory on your computer where you'd like the program to live.</p>
-<pre><code>$ mkdir /your_folder/skedaddle-be</code></pre>
+<pre><code>$ mkdir /your_folder/sweater_weather</code></pre>
 
 <p><b>2. </b> Navigate into the recently created directory.</p>
-<pre><code>$ cd /your_folder/skedaddle-be</code></pre>
+<pre><code>$ cd /your_folder/sweater_weather</code></pre>
 <p><b>3. </b> Copy the repository by clicking on the code button on Github repo page (using SSH).</p>
 
 
